@@ -3,8 +3,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const letters = document.getElementsByClassName('letter')
     const keys = document.getElementsByClassName('key')
     const shiftables = document.getElementsByClassName('shift')
+    const special_buttons = document.getElementsByClassName('special')
 
-    Array.from(letters)
+    Array.from(keys)
         .forEach(
             ele => ele.addEventListener('click', start_typing)
         )
@@ -34,16 +35,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
+    function special_type(event) {
+        const request = new XMLHttpRequest()
+        let url = None
+        //FINISH THIS
+        switch (event.target.id) {
+            
+        }
+
+    }
+
     function start_typing(event) {
         const request = new XMLHttpRequest()
-        let url
-        if (event.value === "enter") {
-            url = "/type_enter"
-        } else if (event.value === "backspace") {
-            url = "/type_backspace"
-        } else {
-            url = `/type_letter(${event.value})`
-        }
+        let url = `/type_letter(${event.value})`
         request.open("GET", url, true)
         request.send()
     }

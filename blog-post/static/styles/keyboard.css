@@ -22,11 +22,39 @@ body{
     justify-content: space-evenly;
 }
 
-.space {
+#space {
     padding: 1rem;
     width: 50%;
     height: 2rem;
     background: grey;
+}
+
+#space:active {
+    background-color: lightgrey;
+}
+
+#caps {
+    padding: 1rem;
+}
+
+#caps:active {
+    background-color: lightgrey;
+}
+
+#tab {
+    padding: 1rem;
+}
+
+#tab:active {
+    background-color: lightgrey;
+}
+
+#backspace {
+    padding: 1rem;
+}
+
+#backspace:active {
+    background-color: lightgrey;
 }
 
 .key {
