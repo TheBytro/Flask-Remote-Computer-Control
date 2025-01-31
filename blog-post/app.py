@@ -56,25 +56,37 @@ def console_print_hi():
 
 def type_letter(letter):
     """Will type a given letter on the computer"""
-    pyautogui.write(letter, interval=0.1)
+    pyautogui.write(letter, interval=0)
 
 
-def type_enter():
-    """Will type enter on the computer"""
-    pyautogui.press('enter')
+def press_input(inpt):
+    """Will press input on the computer"""
+    pyautogui.press(inpt)
+
+def type_slash(x):
+    """Will type a slash on the computer"""
+    if x == "f":
+        pyautogui.write("/")
+    elif x == "b":
+        pyautogui.write("\\")
 
 
-def type_backspace():
-    """Will type backspace on the computer"""
-    pyautogui.press('backspace')
+def type_question_pound(x):
+    """Will type a question mark or the pound key on the computer"""
+    if x == "q":
+        pyautogui.write("?")
+    elif x == "p":
+        pyautogui.press("#")
+
 
 
 def main():
     """What will be run"""
     print("obtaining ip address...")
     try:
-        name = socket.gethostname()
-        host = socket.gethostbyname(name)
+        name = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        name.connect(("8.8.8.8", 80))
+        host = name.getsockname()[0]
         print(host)
         app.run(host=host, port=5000, debug=True)
     except socket.error:
