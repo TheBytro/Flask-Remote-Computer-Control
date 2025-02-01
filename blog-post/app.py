@@ -80,6 +80,7 @@ def launch_app(app):
     """Will launch a given app"""
     print(f"Launching {app}")
     os.system(f".\\shortcuts\\{app}.lnk")
+#endregion App
 
 
 def main():
