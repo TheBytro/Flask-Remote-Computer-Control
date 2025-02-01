@@ -49,11 +49,7 @@ def command(FUNCTION=None):
     exec(FUNCTION)
     return ""
 
-def console_print_hi():
-    """Will print Hi to the console"""
-    print("Hi")
-
-
+#region Keyboard
 def type_letter(letter):
     """Will type a given letter on the computer"""
     pyautogui.write(letter, interval=0)
@@ -77,7 +73,13 @@ def type_question_pound(x):
         pyautogui.write("?")
     elif x == "p":
         pyautogui.press("#")
+#endregion Keyboard
 
+#region App
+def launch_app(app):
+    """Will launch a given app"""
+    print(f"Launching {app}")
+    os.system(f".\\shortcuts\\{app}.lnk")
 
 
 def main():
