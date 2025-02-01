@@ -8,8 +8,8 @@ body{
 }
 
 #keyboard {
-    height: 60vh;
-    width: 70vw;
+    height: 65vh;
+    width: 75vw;
     background: darkgrey;
     display: flex;
     flex-direction: column;
@@ -25,7 +25,7 @@ body{
 #space {
     padding: 1rem;
     width: 50%;
-    height: 2rem;
+    height: 1.5rem;
     background: grey;
 }
 
