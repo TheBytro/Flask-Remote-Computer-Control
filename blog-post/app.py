@@ -4,7 +4,7 @@ Khymari Sandy
 
 import os
 import socket
-import subprocess
+import pyperclip
 import pyautogui
 from flask import Flask, render_template
 
@@ -28,8 +28,7 @@ def open_apps():
             output += f'<button class="shortcut-button" type="button">{file[:-4]}</button>'
     if output != "":
         return render_template('app_launcher.html', output=output)
-    else:
-        return render_template('app_launcher.html')
+    return render_template('app_launcher.html')
 
 @app.route('/about')
 def about():
@@ -76,10 +75,10 @@ def type_question_pound(x):
 #endregion Keyboard
 
 #region App
-def launch_app(app):
+def launch_app(shortcut):
     """Will launch a given app"""
-    print(f"Launching {app}")
-    os.system(f".\\shortcuts\\{app}.lnk")
+    print(f"Launching {shortcut}")
+    os.system(f".\\shortcuts\\{shortcut}.lnk")
 #endregion App
 
 
@@ -87,11 +86,12 @@ def main():
     """What will be run"""
     print("obtaining ip address...")
     try:
+        port=5000
         name = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         name.connect(("8.8.8.8", 80))
         host = name.getsockname()[0]
-        print(host)
-        app.run(host=host, port=5000, debug=True)
+        pyperclip.copy(f'{host}:{port}')
+        app.run(host=host, port=port, debug=True)
     except socket.error:
         print("Failed to get IP address")
 
