@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+    //#region Keyboard
     let isCapsLocked = false
     const letters = document.getElementsByClassName('letter')
     const keys = document.getElementsByClassName('key')
@@ -128,5 +129,9 @@ document.addEventListener("DOMContentLoaded", () => {
         request.open("GET", url, true)
         request.send()
     }
+    //#endregion Keyboard
+    //#region Trackpad
+    
+    //#endregion Trackpad
 })
 
