@@ -6,6 +6,7 @@ import os
 import socket
 import pyperclip
 import pyautogui
+import pathlib
 from flask import Flask, render_template
 
 
@@ -22,9 +23,8 @@ def index():
 def open_apps():
     """Will render the app launcher page"""
     output = ""
-
-    for file in os.listdir("./shortcuts"):
-        if file.endswith(".lnk"):
+    for file in os.listdir(f"{pathlib.Path(__file__).resolve().parent}\\shortcuts"):
+        if file.endswith(".lnk") or file.endswith(".url"):
             output += f'<button class="shortcut-button" type="button">{file[:-4]}</button>'
     if output != "":
         return render_template('app_launcher.html', output=output)
