@@ -8,7 +8,12 @@
     </head>
     <body>
         <h1><a href="/"> Homepage</a></h1>
-        <div id="keyboard">
+        <label for="control-select">Choose Input Type: </label>
+        <select name="inputting" id="control-select">
+            <option value="keyboard">Keyboard</option>
+            <option value="trackpad">Trackpad</option>
+        </select>
+        <div class="displays flex" id="keyboard">
             <div class="row">
                 <div class="key hardshift" id="1">1</div>
                 <div class="key hardshift" id="2">2</div>
@@ -69,6 +74,30 @@
             </div>
             <div class="row">
                 <div class="special" id="space"></div>
+            </div>
+        </div>
+        <div class="displays flex" id="trackpad">
+            <div>
+                <label for="screen-width">Screen Width</label>
+                <input type="number" id="screen-width" name="screen-width" min="1920" step="640" value="1920">
+                <label for="screen-height">Screen Width</label>
+                <input type="number" id="screen-height" name="screen-height" min="1080" step="100" value="1080">
+            </div>
+            <div id="mouse">
+                <div id="mouse-area">
+
+                </div>
+                <div id="click-area">
+                    <div class="mouse-clicks" id="left-click">
+
+                    </div>
+                    <div id="middle-click">
+
+                    </div>
+                    <div class="mouse-clicks" id="right-click">
+
+                    </div>
+                </div>
             </div>
         </div>
     </body>

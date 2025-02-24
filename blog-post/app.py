@@ -4,6 +4,7 @@ Khymari Sandy
 
 import os
 import socket
+import pathlib
 import pyperclip
 import pyautogui
 from flask import Flask, render_template
@@ -22,9 +23,8 @@ def index():
 def open_apps():
     """Will render the app launcher page"""
     output = ""
-
-    for file in os.listdir("./shortcuts"):
-        if file.endswith(".lnk"):
+    for file in os.listdir(f"{pathlib.Path(__file__).resolve().parent}\\shortcuts"):
+        if file.endswith(".lnk") or file.endswith(".url"):
             output += f'<button class="shortcut-button" type="button">{file[:-4]}</button>'
     if output != "":
         return render_template('app_launcher.html', output=output)
@@ -73,6 +73,16 @@ def type_question_pound(x):
     elif x == "p":
         pyautogui.press("#")
 #endregion Keyboard
+
+#region Mouse
+def click_mouse(x):
+    """Will click mouse on the computer depending on given click type"""
+    pyautogui.click(button=x)
+
+def move_mouse_to(x, y):
+    """Will move the mouse to the given position"""
+    pyautogui.moveTo(x, y)
+#endregion Mouse
 
 #region App
 def launch_app(shortcut):
