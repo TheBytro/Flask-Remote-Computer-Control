@@ -1,4 +1,23 @@
 document.addEventListener("DOMContentLoaded", () => {
+    //#region Swapping
+    const input_displays = document.getElementsByClassName('displays')
+    const dropdown = document.getElementById('control-select')
+    dropdown.addEventListener('change', display_input)
+    document.getElementById('trackpad').style.display = 'none'
+
+    function display_input() {
+        Array.from(input_displays)
+            .forEach(
+                ele => {
+                    if (ele.getAttribute('id') !== dropdown.value) {
+                        ele.style.display = 'none'
+                    } else {
+                        ele.style.display = ele.classList[1]
+                    }
+                }
+            )
+    }
+    //#endregion Swapping
     //#region Keyboard
     let isCapsLocked = false
     const letters = document.getElementsByClassName('letter')
@@ -131,7 +150,37 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     //#endregion Keyboard
     //#region Trackpad
-    
+    const mouse_movement_area = document.getElementById('mouse-area')
+    const right_click_mouse = document.getElementById('right-click')
+    const left_click_mouse = document.getElementById('left-click')
+    const middle_click_mouse = document.getElementById('middle-click')
+    const screen_width = document.getElementById('screen-width')
+    const screen_height = document.getElementById('screen-height')
+
+    right_click_mouse.addEventListener("click", click_ability)
+    left_click_mouse.addEventListener("click", click_ability)
+    middle_click_mouse.addEventListener("click", click_ability)
+    mouse_movement_area.addEventListener("mousemove", move_mouse_to)
+
+    function click_ability(e) {
+        const request = new XMLHttpRequest()
+        const input = e.target.getAttribute('id').split('-')[0]
+        let url = `/click_mouse("${input}")`
+        request.open("GET", url, true)
+        request.send()
+    }
+
+    function move_mouse_to(e) {
+        const bounds = e.target.getBoundingClientRect()
+        const width_scaler = screen_width.value / e.target.clientWidth
+        const height_scaler = screen_height.value / e.target.clientHeight
+        const newXPos = (e.clientX - bounds.left) * width_scaler
+        const newYPos = (e.clientY - bounds.top) * height_scaler
+        const request = new XMLHttpRequest()
+        const url = `/move_mouse_to(${newXPos}, ${newYPos})`
+        request.open("GET", url, true)
+        request.send()
+    }
     //#endregion Trackpad
 })
 

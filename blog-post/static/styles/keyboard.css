@@ -64,3 +64,45 @@ body{
 .key:active {
     background-color: lightgrey;
 }
+
+#trackpad {
+    display: flex;
+    flex-direction: column;
+}
+
+#mouse {
+    height: 45vh;
+    width: 45vw;
+    background-color: grey;
+    display: flex;
+    flex-direction: column;
+    border: solid black;
+}
+
+#mouse-area {
+    background-color: darkgrey;
+    width: 100%;
+    height: 80%;
+}
+
+#click-area {
+    width: 100%;
+    height: 20%;
+    border-top: solid black;
+    display: flex;
+}
+
+.mouse-clicks {
+    width: 45%;
+    height: 100%;
+}
+
+#middle-click {
+    width: 10%;
+    height: 100%;
+    border-right: solid black;
+}
+
+#left-click {
+    border-right: solid black;
+}

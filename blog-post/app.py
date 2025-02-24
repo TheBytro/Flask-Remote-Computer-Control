@@ -4,9 +4,9 @@ Khymari Sandy
 
 import os
 import socket
+import pathlib
 import pyperclip
 import pyautogui
-import pathlib
 from flask import Flask, render_template
 
 
@@ -73,6 +73,16 @@ def type_question_pound(x):
     elif x == "p":
         pyautogui.press("#")
 #endregion Keyboard
+
+#region Mouse
+def click_mouse(x):
+    """Will click mouse on the computer depending on given click type"""
+    pyautogui.click(button=x)
+
+def move_mouse_to(x, y):
+    """Will move the mouse to the given position"""
+    pyautogui.moveTo(x, y)
+#endregion Mouse
 
 #region App
 def launch_app(shortcut):
